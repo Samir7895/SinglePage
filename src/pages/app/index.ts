@@ -2,6 +2,7 @@ import Page from "../../core/templates/page";
 import MainPage from "../main";
 import SettingsPage from "../settings";
 import StaticPage from "../statistics";
+import Header from "../../core/components/header";
 
 export const enum PageIds {
     MainPage = 'main-page',
@@ -12,6 +13,7 @@ export const enum PageIds {
 class App {
     private static container: HTMLElement = document.body
     private initialPage: MainPage
+    private header: Header
 
     static renderNewPage(idPage: string){
       App.container.innerHTML = ''
@@ -39,12 +41,14 @@ class App {
 
     constructor() {
         this.initialPage = new MainPage('main-page')
+        this.header = new Header('header', 'header')
     }
 
     run () {
         // const mainPageHTML = this.initialPage.render()
         // this.container.append(mainPageHTML)
         App.renderNewPage('settings-page')
+        App.container.append(this.header.render())
         this.enableRouteChange()
     }
 }
