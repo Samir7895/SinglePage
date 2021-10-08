@@ -22,7 +22,7 @@ class App {
       if (currentPageHtml){
           currentPageHtml.remove()
       }
-      let page: Page | null = null
+      let page1: Page | null = null
 
        if (idPage === PageIds.MainPage) {
            page = new MainPage(idPage)
