@@ -24,6 +24,12 @@ class App {
        }
     }
 
+    private enableRouteChange() {
+      window.addEventListener('hashchange', () => {
+          console.log('hashchange')
+      })
+    }
+
     constructor() {
         this.container = document.body
         this.initialPage = new MainPage('main-page')
@@ -33,6 +39,7 @@ class App {
         // const mainPageHTML = this.initialPage.render()
         // this.container.append(mainPageHTML)
         App.renderNewPage('settings-page')
+        this.enableRouteChange()
     }
 }
 
