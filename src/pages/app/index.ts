@@ -3,7 +3,7 @@ import MainPage from "../main";
 import SettingsPage from "../settings";
 import StaticPage from "../statistics";
 import Header from "../../core/components/header";
-import ErrorsPage from "../errors";
+import ErrorsPage, { ErrorTypes } from "../errors";
 
 export const enum PageIds {
     MainPage = 'main-page',
@@ -31,7 +31,7 @@ class App {
        } else if (idPage === PageIds.StatisticsPage){
            page = new StaticPage(idPage)
        } else {
-           page = new ErrorsPage(idPage, '404')
+           page = new ErrorsPage(idPage, ErrorTypes.Error_404)
        }
        if (page) {
          const pageHtml = page.render()
