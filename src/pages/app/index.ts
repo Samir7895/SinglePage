@@ -26,7 +26,8 @@ class App {
 
     private enableRouteChange() {
       window.addEventListener('hashchange', () => {
-          console.log('hashchange')
+          const hash = window.location.hash
+          console.log('hashchange', hash)
       })
     }
 
