@@ -23,9 +23,17 @@ class Header extends Component {
 
     renderPageButtons() {
       const pageButtons = document.createElement('div')
+      Buttons.forEach((button) => {
+          const buttonHtml = document.createElement('a')
+          buttonHtml.href = `#${button.id}`
+          buttonHtml.innerText = button.text
+          pageButtons.append(buttonHtml)
+      })
+       this.container.append(pageButtons)
     }
 
     render() {
+      this.renderPageButtons()
       return this.container
     }
 }
