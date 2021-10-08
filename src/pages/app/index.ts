@@ -24,7 +24,7 @@ class App {
       }
       let page: Page | null = null
 
-       if (idPage3 === PageIds.MainPage) {
+       if (idPage === PageIds.MainPage) {
            page = new MainPage(idPage)
        } else if (idPage === PageIds.SettingsPage){
            page = new SettingsPage(idPage)
