@@ -12,11 +12,15 @@ export const enum PageIds {
 
 class App {
     private static container: HTMLElement = document.body
+    private static defaultPageId: string = 'current-page'
     private initialPage: MainPage
     private header: Header
 
     static renderNewPage(idPage: string){
-      App.container.innerHTML = ''
+      const currentPageHtml = document.querySelector(`#${App.defaultPageId}`)
+      if (currentPageHtml){
+          currentPageHtml.remove()
+      }
       let page: Page | null = null
 
        if (idPage === PageIds.MainPage) {
@@ -28,6 +32,7 @@ class App {
        }
        if (page) {
          const pageHtml = page.render()
+           pageHtml.id = App.defaultPageId
            App.container.append(pageHtml)
        }
     }
@@ -45,10 +50,8 @@ class App {
     }
 
     run () {
-        // const mainPageHTML = this.initialPage.render()
-        // this.container.append(mainPageHTML)
-        App.renderNewPage('settings-page')
         App.container.append(this.header.render())
+        App.renderNewPage('settings-page')
         this.enableRouteChange()
     }
 }
